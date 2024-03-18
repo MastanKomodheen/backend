@@ -100,9 +100,9 @@ const loginUser = asyncHandler(async (req, res) => {
     //find the user
     //password check
     //accsess tokens and refresh tokens
-    //send cookies
+    //send cookies12345
     const { username, password, email } = req.body
-    if (!username || !email) {
+    if (!username && !email) {
         throw new ApiError(400, "username or email is required")
     }
     const user = await User.findOne({
