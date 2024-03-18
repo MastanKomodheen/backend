@@ -36,16 +36,22 @@ const registerUser = asyncHandler(async (req, res) => {
     if (existedUser) {
         throw new ApiError(400, "User with email or user name alredy exist")
     }
+    // console.log(fullName, email, username, password)
     // console.log(req.files)
-    const avatarLocalPath = req.files?.avatar[0]?.path;
+   // const avatarLocalPath = req.files?.avatar[0]?.path; // Check if req.files.avatar array exists before accessing its elements
     // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
     //cover image is there or not
     let coverImageLocalPath;
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
-        coverImageLocalPath = req.files.coverImage[0].path;
+        coverImageLocalPath = req.files.coverImage[0].path
     }
-
+    let avatarLocalPath;
+    if (req.files && req.files.avatar && req.files.avatar[0]) {
+        avatarLocalPath = req.files.avatar[0].path;
+    } else {
+        console.log('No avatar file was uploaded.');
+    }
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is reqire")
     }
