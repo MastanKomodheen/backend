@@ -1,1 +1,1 @@
-export const DB_NAME="backbonereact"
+export const DB_NAME = "backbonereact"

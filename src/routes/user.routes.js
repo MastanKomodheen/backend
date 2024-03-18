@@ -19,6 +19,7 @@ router.route("/rigister").post(
 router.route("/login").post(loginUser)
 //secure routes
 //every time midleware is ther berofe call needed
-router.route("/logout").post(verifyJWT,logoutUser)
+
+router.route("/logout").post(verifyJWT, logoutUser)
 router.route("/refresh-token").post(refreshAccessToken)
 export default router
